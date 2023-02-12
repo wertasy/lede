@@ -48,7 +48,9 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          curl -sSL -o .config https://gist.github.com/wertasy/6226d81391c7be6f17ea8a955d9ec333/raw/51b5cdead03d1ab5b1cde78e45ee06d7cec8cfd0/redmi_ax6000.config
+          make defconfig
 
       - name: Download packages
         run: make download -j16
